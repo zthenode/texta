@@ -116,7 +116,7 @@ usage()
     char c;
     int i;
     
-    fprintf(stderr, "\nYacc %s\n", version);
+    fprintf(stderr, "\n%s (Yacc) %s\n", myname, version);
     fprintf(stderr, "\nUsage: %s [-+dlrtv] [-b file_prefix] [-o output_file] [-R code_file]"
        "\n\t[-D header_file] [-V description_file] filename\n",myname);
 

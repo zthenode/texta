@@ -580,6 +580,19 @@ _( "  %d/%d character classes needed %d/%d words of storage, %d reused\n" ),
 	exit( exit_status );
 	}
 
+/* basename - remove leading '/' or '\\' */
+char *basename(arg)
+char *arg;
+{
+    char *a, c;
+    
+    for (c = *(a = arg); c; c = *(++a)) {
+        if ((c == '/') || (c == '\\') || (c == ':')) {
+            arg = a + 1;
+        }
+    }
+    return arg;
+}
 
 /* flexinit - initialize flex */
 
@@ -614,7 +627,7 @@ char **argv;
 	defs1_offset = prolog_offset = action_offset = action_index = 0;
 	action_array[0] = '\0';
 
-	program_name = argv[0];
+	program_name = basename(argv[0]);
 
 	if ( program_name[0] != '\0' &&
 	     program_name[strlen( program_name ) - 1] == '+' )
