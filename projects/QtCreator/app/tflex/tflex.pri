@@ -16,13 +16,14 @@
 #   File: tflex.pri
 #
 # Author: $author$
-#   Date: 9/4/2021
+#   Date: 9/5/2021
 #
-# QtCreator .pri file for texta executable tflex
+# QtCreator .pri file for xde executable tflex
 ########################################################################
 
 ########################################################################
 # tflex
+TFLEX_SRC = $${XDE_SRC}/capp/tflex
 
 # tflex TARGET
 #
@@ -31,47 +32,55 @@ tflex_TARGET = tflex
 # tflex INCLUDEPATH
 #
 tflex_INCLUDEPATH += \
-$${texta_INCLUDEPATH} \
+$${xde_INCLUDEPATH} \
 
 # tflex DEFINES
 #
 tflex_DEFINES += \
-$${texta_DEFINES} \
-
-#DEFAULT_LOGGING_LEVELS_ERROR \
-#TEXTA_APP_CONSOLE_TFLEX_MAIN_INSTANCE \
+$${xde_DEFINES} \
 
 ########################################################################
 # tflex OBJECTIVE_HEADERS
 #
 #tflex_OBJECTIVE_HEADERS += \
-#$${TEXTA_SRC}/texta/app/console/tflex/main.hh \
+#$${XDE_SRC}/xde/app/console/tflex/main.hh \
 
 # tflex OBJECTIVE_SOURCES
 #
 #tflex_OBJECTIVE_SOURCES += \
-#$${TEXTA_SRC}/texta/app/console/tflex/main.mm \
+#$${XDE_SRC}/xde/app/console/tflex/main.mm \
 
 ########################################################################
 # tflex HEADERS
 #
-#tflex_HEADERS += \
-#$${TEXTA_SRC}/texta/app/console/tflex/main.hpp \
+tflex_HEADERS += \
 
 # tflex SOURCES
 #
-#tflex_SOURCES += \
-#$${TEXTA_SRC}/texta/app/console/tflex/main.cpp \
+tflex_SOURCES += \
+$${TFLEX_SRC}/ccl.c \
+$${TFLEX_SRC}/dfa.c \
+$${TFLEX_SRC}/ecs.c \
+$${TFLEX_SRC}/gen.c \
+$${TFLEX_SRC}/misc.c \
+$${TFLEX_SRC}/nfa.c \
+$${TFLEX_SRC}/parse.c \
+$${TFLEX_SRC}/scan.c \
+$${TFLEX_SRC}/skel.c \
+$${TFLEX_SRC}/sym.c \
+$${TFLEX_SRC}/tblcmp.c \
+$${TFLEX_SRC}/yylex.c \
+$${TFLEX_SRC}/main.c \
 
 ########################################################################
 # tflex FRAMEWORKS
 #
-tflex_FRAMEWORKS += \
-$${texta_FRAMEWORKS} \
+#tflex_FRAMEWORKS += \
+#$${xde_FRAMEWORKS} \
 
 # tflex LIBS
 #
-tflex_LIBS += \
-$${texta_LIBS} \
+#tflex_LIBS += \
+#$${xde_LIBS} \
 
 

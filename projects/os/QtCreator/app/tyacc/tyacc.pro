@@ -16,13 +16,13 @@
 #   File: tyacc.pro
 #
 # Author: $author$
-#   Date: 9/4/2021
+#   Date: 9/5/2021
 #
-# QtCreator .pro file for texta executable tyacc
+# QtCreator .pro file for xde executable tyacc
 ########################################################################
-include(../../../../../build/QtCreator/texta.pri)
-include(../../../../QtCreator/texta.pri)
-include(../../texta.pri)
+include(../../../../../build/QtCreator/xde.pri)
+include(../../../../QtCreator/xde.pri)
+include(../../xde.pri)
 include(../../../../QtCreator/app/tyacc/tyacc.pri)
 
 TARGET = $${tyacc_TARGET}

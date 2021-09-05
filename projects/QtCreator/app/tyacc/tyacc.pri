@@ -16,13 +16,14 @@
 #   File: tyacc.pri
 #
 # Author: $author$
-#   Date: 9/4/2021
+#   Date: 9/5/2021
 #
-# QtCreator .pri file for texta executable tyacc
+# QtCreator .pri file for xde executable tyacc
 ########################################################################
 
 ########################################################################
 # tyacc
+TYACC_SRC = $${XDE_SRC}/capp/tyacc
 
 # tyacc TARGET
 #
@@ -31,47 +32,55 @@ tyacc_TARGET = tyacc
 # tyacc INCLUDEPATH
 #
 tyacc_INCLUDEPATH += \
-$${texta_INCLUDEPATH} \
+$${xde_INCLUDEPATH} \
 
 # tyacc DEFINES
 #
 tyacc_DEFINES += \
-$${texta_DEFINES} \
-
-#DEFAULT_LOGGING_LEVELS_ERROR \
-#TEXTA_APP_CONSOLE_TYACC_MAIN_INSTANCE \
+$${xde_DEFINES} \
 
 ########################################################################
 # tyacc OBJECTIVE_HEADERS
 #
 #tyacc_OBJECTIVE_HEADERS += \
-#$${TEXTA_SRC}/texta/app/console/tyacc/main.hh \
+#$${XDE_SRC}/xde/app/console/tyacc/main.hh \
 
 # tyacc OBJECTIVE_SOURCES
 #
 #tyacc_OBJECTIVE_SOURCES += \
-#$${TEXTA_SRC}/texta/app/console/tyacc/main.mm \
+#$${XDE_SRC}/xde/app/console/tyacc/main.mm \
 
 ########################################################################
 # tyacc HEADERS
 #
-#tyacc_HEADERS += \
-#$${TEXTA_SRC}/texta/app/console/tyacc/main.hpp \
+tyacc_HEADERS += \
+$${TYACC_SRC}/function_defs.h \
 
 # tyacc SOURCES
 #
-#tyacc_SOURCES += \
-#$${TEXTA_SRC}/texta/app/console/tyacc/main.cpp \
+tyacc_SOURCES += \
+$${TYACC_SRC}/closure.c \
+$${TYACC_SRC}/error.c \
+$${TYACC_SRC}/lalr.c \
+$${TYACC_SRC}/lr0.c \
+$${TYACC_SRC}/main.c \
+$${TYACC_SRC}/mkpar.c \
+$${TYACC_SRC}/output.c \
+$${TYACC_SRC}/reader.c \
+$${TYACC_SRC}/skeleton.c \
+$${TYACC_SRC}/symtab.c \
+$${TYACC_SRC}/verbose.c \
+$${TYACC_SRC}/warshall.c \
 
 ########################################################################
 # tyacc FRAMEWORKS
 #
-tyacc_FRAMEWORKS += \
-$${texta_FRAMEWORKS} \
+#tyacc_FRAMEWORKS += \
+#$${xde_FRAMEWORKS} \
 
 # tyacc LIBS
 #
-tyacc_LIBS += \
-$${texta_LIBS} \
+#tyacc_LIBS += \
+#$${xde_LIBS} \
 
 
