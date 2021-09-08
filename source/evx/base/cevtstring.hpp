@@ -1,0 +1,28 @@
+///////////////////////////////////////////////////////////////////////
+//   File: cevtstring.hpp
+//
+// Author: $author$
+//   Date: 4/11/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _CEVTSTRING_HPP
+#define _CEVTSTRING_HPP
+
+#include "evtstring.hpp"
+#include "cevstringt.hpp"
+#include "evtcharreader.hpp"
+#include "evtcharwriter.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Typedef: CEvTString
+//
+//   Author: $author$
+//     Date: 4/13/2007
+///////////////////////////////////////////////////////////////////////
+typedef CEvStringT
+<TCHAR, ULONG, LONG, 
+ EvTCharReader, EvTCharWriter, EvTString> 
+CEvTString;
+#endif // _CEVTSTRING_HPP

@@ -1,0 +1,37 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evservletresponse.hpp
+//
+// Author: $author$
+//   Date: 4/12/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _EVSERVLETRESPONSE_HPP
+#define _EVSERVLETRESPONSE_HPP
+
+#include "evservletinteraction.hpp"
+#include "evcharwriter.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: EvServletResponse
+//
+// Author: $author$
+//   Date: 4/12/2007
+///////////////////////////////////////////////////////////////////////
+class EV_EXPORT_CLASS EvServletResponse
+: virtual public EvServletInteraction
+{
+public:
+    typedef EvServletInteraction CImplements;
+    typedef EvServletResponse CDerives;
+
+    ///////////////////////////////////////////////////////////////////////
+    // Function: GetWriter
+    //
+    //   Author: $author$
+    //     Date: 4/16/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvCharWriter& GetWriter() const = 0;
+};
+#endif // _EVSERVLETRESPONSE_HPP

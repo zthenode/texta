@@ -1,0 +1,36 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evservletrequest.hpp
+//
+// Author: $author$
+//   Date: 4/12/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _EVSERVLETREQUEST_HPP
+#define _EVSERVLETREQUEST_HPP
+
+#include "evservletinteraction.hpp"
+#include "evcharreader.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: EvServletRequest
+//
+// Author: $author$
+//   Date: 4/12/2007
+///////////////////////////////////////////////////////////////////////
+class EV_EXPORT_CLASS EvServletRequest
+: virtual public EvServletInteraction
+{
+public:
+    typedef EvServletInteraction CImplements;
+    typedef EvServletRequest CDerives;
+    ///////////////////////////////////////////////////////////////////////
+    // Function: GetReader
+    //
+    //   Author: $author$
+    //     Date: 4/16/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvCharReader& GetReader() const = 0;
+};
+#endif // _EVSERVLETREQUEST_HPP

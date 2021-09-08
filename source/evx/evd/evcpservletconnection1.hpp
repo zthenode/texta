@@ -1,0 +1,60 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evcpservletconnection.hpp
+//
+// Author: $author$
+//   Date: 6/3/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _EVCPSERVLETCONNECTION_HPP
+#define _EVCPSERVLETCONNECTION_HPP
+
+#include "evservletconnection.hpp"
+#include "evcpservletcontext.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: EvcpServletConnection
+//
+// Author: $author$
+//   Date: 6/3/2007
+///////////////////////////////////////////////////////////////////////
+class EV_EXPORT_CLASS EvcpServletConnection
+: virtual public EvServletConnection
+{
+public:
+    typedef EvServletConnection CImplements;
+    typedef EvcpServletConnection CDerives;
+    ///////////////////////////////////////////////////////////////////////
+    // Function: DeleteAllEvcpServletContexts
+    //
+    //   Author: $author$
+    //     Date: 6/12/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvError DeleteAllEvcpServletContexts() = 0;
+    ///////////////////////////////////////////////////////////////////////
+    // Function: AddEvcpServletContext
+    //
+    //   Author: $author$
+    //     Date: 6/3/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvError AddEvcpServletContext
+    (EvcpServletContext& servletContext) = 0;
+    ///////////////////////////////////////////////////////////////////////
+    // Function: RemoveEvcpServletContext
+    //
+    //   Author: $author$
+    //     Date: 6/3/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvServletContext* RemoveEvcpServletContext
+    (const EvcpServlet& servlet) = 0;
+    ///////////////////////////////////////////////////////////////////////
+    // Function: FindEvcpServletContext
+    //
+    //   Author: $author$
+    //     Date: 6/3/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvcpServletContext* FindEvcpServletContext
+    (const EvcpServlet& servlet) const = 0;
+};
+#endif // _EVCPSERVLETCONNECTION_HPP

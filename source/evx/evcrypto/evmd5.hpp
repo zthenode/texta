@@ -1,0 +1,46 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evmd5.hpp
+//
+// Author: $author$
+//   Date: 11/2/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _EVMD5_HPP
+#define _EVMD5_HPP
+
+#include "evhash.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: EvMD5
+//
+// Author: $author$
+//   Date: 11/2/2007
+///////////////////////////////////////////////////////////////////////
+class EV_EXPORT_CLASS EvMD5
+: virtual public EvHash
+{
+public:
+    typedef EvHash CImplements;
+    typedef EvMD5 CDerives;
+
+    ///////////////////////////////////////////////////////////////////////
+    //   Enum:  
+    //
+    // Author: $author$
+    //   Date: 11/5/2007
+    ///////////////////////////////////////////////////////////////////////
+    enum 
+    {
+        EV_HASH_SIZE = 16,
+        EV_BLOCK_SIZE = 64,
+        EV_KEY_MIN = 1,
+        EV_KEY_MAX = EV_BLOCK_SIZE,
+        EV_KEY_INC = 1,
+        EV_KEY_SIZE = EV_BLOCK_SIZE
+    };
+
+};
+
+#endif // _EVMD5_HPP

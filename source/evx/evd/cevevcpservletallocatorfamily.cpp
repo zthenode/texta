@@ -1,0 +1,22 @@
+///////////////////////////////////////////////////////////////////////
+//   File: cevevcpservletallocatorfamily.cpp
+//
+// Author: $author$
+//   Date: 4/26/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#include "cevevcpservletallocatorfamily.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: CEvEvcpServletAllocatorList
+//
+// Author: $author$
+//   Date: 4/26/2007
+///////////////////////////////////////////////////////////////////////
+template<> CEvEvcpServletAllocatorItem* 
+CEvEvcpServletAllocatorList::CExtends::m_firstItem = 0;
+
+template<> CEvEvcpServletAllocatorItem* 
+CEvEvcpServletAllocatorList::CExtends::m_lastItem = 0;

@@ -1,0 +1,65 @@
+///////////////////////////////////////////////////////////////////////
+//   File: cevencryptor.hpp
+//
+// Author: $author$
+//   Date: 10/27/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _CEVENCRYPTOR_HPP
+#define _CEVENCRYPTOR_HPP
+
+#include "evencryptor.hpp"
+#include "cevcryptoblock.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: CEvEncryptor
+//
+// Author: $author$
+//   Date: 10/27/2007
+///////////////////////////////////////////////////////////////////////
+class CEvEncryptor
+: virtual public EvEncryptor,
+  public CEvCryptoBlock
+{
+public:
+    typedef EvEncryptor CImplements;
+    typedef CEvCryptoBlock CExtends;
+    typedef CEvEncryptor CDerives;
+
+    ///////////////////////////////////////////////////////////////////////
+    // Constructor: CEvEncryptor
+    //
+    //       Author: $author$
+    //         Date: 10/27/2007
+    ///////////////////////////////////////////////////////////////////////
+    CEvEncryptor() 
+    {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    // Destructor: ~CEvEncryptor
+    //
+    //      Author: $author$
+    //        Date: 10/27/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual ~CEvEncryptor()
+    {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    // Function: Encrypt
+    //
+    //   Author: $author$
+    //     Date: 10/27/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual LONG Encrypt
+    (BYTE* out,
+     ULONG outSize,
+     const BYTE* in,
+     LONG inLength=-1) 
+    {
+        LONG length = -EV_ERROR_NOT_IMPLEMENTED;
+        return length;
+    }
+};
+#endif // _CEVENCRYPTOR_HPP

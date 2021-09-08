@@ -1,0 +1,95 @@
+%#############################################################################
+%# Copyright (c) 1988-2010 $organization$
+%#
+%# This software is provided by the author and contributors ``as is'' and
+%# any express or implied warranties, including, but not limited to, the
+%# implied warranties of merchantability and fitness for a particular purpose
+%# are disclaimed.  In no event shall the author or contributors be liable
+%# for any direct, indirect, incidental, special, exemplary, or consequential
+%# damages (including, but not limited to, procurement of substitute goods
+%# or services; loss of use, data, or profits; or business interruption)
+%# however caused and on any theory of liability, whether in contract, strict
+%# liability, or tort (including negligence or otherwise) arising in any way
+%# out of the use of this software, even if advised of the possibility of
+%# such damage.
+%#
+%#   File: cxxlcgi.lcgi
+%#
+%# Author: $author$
+%#   Date: 4/14/2010
+%#
+%# Template used to HTML format C/C++ files with cxxlcgi
+%#
+%#############################################################################
+<!--========================================================================-->
+<!-- This software is provided by the author and contributors ``as is''     -->
+<!-- and any express or implied warranties, including, but not limited to,  -->
+<!-- the implied warranties of merchantability and fitness for a particular -->
+<!-- purpose are disclaimed. In no event shall the author or contributors   -->
+<!-- be liable for any direct, indirect, incidental, special, exemplary,    -->
+<!-- or consequential damages (including, but not limited to, procurement   -->
+<!-- of substitute goods or services; loss of use, data, or profits; or     -->
+<!-- business interruption) however caused and on any theory of liability,  -->
+<!-- whether in contract, strict liability, or tort (including negligence   -->
+<!-- or otherwise) arising in any way out of the use of this software,      -->
+<!-- even if advised of the possibility of such damage.                     -->
+<!--========================================================================-->
+<html>
+    <!--========================================================================-->
+    <!--                                                                        -->
+    <!-- head                                                                   -->
+    <!--                                                                        -->
+    <!--========================================================================-->
+    <head>
+        <title></title>
+        <!--========================================================================-->
+        <!--                                                                        -->
+        <!-- style                                                                  -->
+        <!--                                                                        -->
+        <!--========================================================================-->
+        <style
+         type="text/css">
+		    body { background-color: #ffffee; }
+            a.includel {color: maroon; text-decoration: underline; }
+            font.comment {color: green; font-style:italic; }
+            font.commenteol {color: teal; font-style:italic; }
+            font.processor {color: purple; font-weight: bolder; }
+            font.keyword {color: blue; font-weight: bolder; }
+            font.keywordx {color: purple; font-weight: bolder; }
+            font.keywordy {color: purple; font-weight: bolder; }
+            font.string {color: maroon; }
+            font.char {color: red; }
+        </style>
+        <!--========================================================================-->
+        <!--                                                                        -->
+        <!-- script                                                                 -->
+        <!--                                                                        -->
+        <!--========================================================================-->
+        <script
+         language="JavaScript"
+         type="text/JavaScript">
+        </script>
+    </head>
+    <!--========================================================================-->
+    <!--                                                                        -->
+    <!-- body                                                                   -->
+    <!--                                                                        -->
+    <!--========================================================================-->
+    <body>
+        %include(lcgi-top.lcgi)%
+		<hr/>
+        <pre>%%
+            %<font class="comment">% /*...*/ %</font>%
+            %<font class="commenteol">% //... %</font>%
+            %<font class="processor">%  #...   %</font>%
+            %<font class="keyword">%  ...   %</font>%
+            %<font class="keywordx">%  (...)   %</font>%
+            %<font class="keywordy">%  [...]   %</font>%
+            %<font class="string">%   "..."  %</font>%
+            %<font class="char">%   '...'  %</font>%
+ 		    %<a class="includel" href="% #include... %">%</a>%
+       %%</pre>
+        <hr/>
+        %include(lcgi-bottom.lcgi)%
+    </body>
+</html>

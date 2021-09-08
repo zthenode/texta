@@ -1,0 +1,29 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evhttpservlet.hpp
+//
+// Author: $author$
+//   Date: 6/12/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _EVHTTPSERVLET_HPP
+#define _EVHTTPSERVLET_HPP
+
+#include "evcpservlet.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: EvHttpServlet
+//
+// Author: $author$
+//   Date: 6/12/2007
+///////////////////////////////////////////////////////////////////////
+class EV_EXPORT_CLASS EvHttpServlet
+: virtual public EvcpServlet
+{
+public:
+    typedef EvcpServlet CImplements;
+    typedef EvHttpServlet CDerives;
+};
+
+#endif // _EVHTTPSERVLET_HPP

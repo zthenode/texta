@@ -1,0 +1,13 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evdebug.c
+//
+// Author: $author$
+//   Date: 4/3/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+#define EV_DEBUG_EXPORT
+#include "evdebug.h"
+#undef EV_DEBUG_EXPORT
+
+EvDebugLevels g_evDebugLevels = DEFAULT_EV_DEBUG_LEVELS_VALUE;

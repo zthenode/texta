@@ -1,0 +1,40 @@
+///////////////////////////////////////////////////////////////////////
+//   File: cevcpresponse.hpp
+//
+// Author: $author$
+//   Date: 9/5/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _CEVCPRESPONSE_HPP
+#define _CEVCPRESPONSE_HPP
+
+#include "cevcpresponset.hpp"
+#include "cevcpmessage.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: CEvcpResponse
+//
+// Author: $author$
+//   Date: 9/5/2007
+///////////////////////////////////////////////////////////////////////
+class CEvcpResponse
+: public CEvcpResponseT<CEvcpMessage>
+{
+public:
+    typedef CEvcpResponseT<CEvcpMessage> CExtends;
+    typedef CEvcpResponse CDerives;
+
+    ///////////////////////////////////////////////////////////////////////
+    // Constructor: CEvcpResponse
+    //
+    //       Author: $author$
+    //         Date: 9/5/2007
+    ///////////////////////////////////////////////////////////////////////
+    CEvcpResponse(EvcpHeader& header)
+    : CExtends(header) 
+    {
+    }
+};
+#endif // _CEVCPRESPONSE_HPP

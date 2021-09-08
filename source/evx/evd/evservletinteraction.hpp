@@ -1,0 +1,36 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evservletinteraction.hpp
+//
+// Author: $author$
+//   Date: 4/23/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _EVSERVLETINTERACTION_HPP
+#define _EVSERVLETINTERACTION_HPP
+
+#include "evservletconnection.hpp"
+#include "evbase.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: EvServletInteraction
+//
+// Author: $author$
+//   Date: 4/23/2007
+///////////////////////////////////////////////////////////////////////
+class EV_EXPORT_CLASS EvServletInteraction
+: virtual public EvBase
+{
+public:
+    typedef EvBase CImplements;
+    typedef EvServletInteraction CDerives;
+    ///////////////////////////////////////////////////////////////////////
+    // Function: GetConnection
+    //
+    //   Author: $author$
+    //     Date: 4/23/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvServletConnection& GetConnection() const = 0;
+};
+#endif // _EVSERVLETINTERACTION_HPP

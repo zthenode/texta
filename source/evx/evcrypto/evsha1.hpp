@@ -1,0 +1,46 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evsha1.hpp
+//
+// Author: $author$
+//   Date: 11/2/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _EVSHA1_HPP
+#define _EVSHA1_HPP
+
+#include "evhash.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: EvSHA1
+//
+// Author: $author$
+//   Date: 11/2/2007
+///////////////////////////////////////////////////////////////////////
+class EV_EXPORT_CLASS EvSHA1
+: virtual public EvHash
+{
+public:
+    typedef EvHash CImplements;
+    typedef EvSHA1 CDerives;
+
+    ///////////////////////////////////////////////////////////////////////
+    //   Enum:  
+    //
+    // Author: $author$
+    //   Date: 11/5/2007
+    ///////////////////////////////////////////////////////////////////////
+    enum 
+    {
+        EV_HASH_SIZE = 20,
+        EV_BLOCK_SIZE = 64,
+        EV_KEY_MIN = 1,
+        EV_KEY_MAX = EV_BLOCK_SIZE,
+        EV_KEY_INC = 1,
+        EV_KEY_SIZE = EV_BLOCK_SIZE
+    };
+
+};
+
+#endif // _EVSHA1_HPP

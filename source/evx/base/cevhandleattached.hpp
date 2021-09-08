@@ -1,0 +1,27 @@
+///////////////////////////////////////////////////////////////////////
+//   File: cevhandleattached.hpp
+//
+// Author: $author$
+//   Date: 7/3/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _CEVHANDLEATTACHED_HPP
+#define _CEVHANDLEATTACHED_HPP
+
+#include "evhandleattached.hpp"
+#include "cevattached.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Typedef: CEvHANDLEAttached
+//
+//   Author: $author$
+//     Date: 7/3/2007
+///////////////////////////////////////////////////////////////////////
+typedef CEvAttached
+<HANDLE, INVALID_HANDLE_T, INVALID_HANDLE, 
+ EvHANDLEAttached, CEvBase>
+CEvHANDLEAttached;
+
+#endif // _CEVHANDLEATTACHED_HPP

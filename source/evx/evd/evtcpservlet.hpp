@@ -1,0 +1,100 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evtcpservlet.hpp
+//
+// Author: $author$
+//   Date: 4/12/2007
+//
+//    $Id$
+///////////////////////////////////////////////////////////////////////
+#ifndef _EVTCPSERVLET_HPP
+#define _EVTCPSERVLET_HPP
+
+#include "evservlet.hpp"
+#include "evtcpservletrequest.hpp"
+#include "evtcpservletresponse.hpp"
+#include "evbase.hpp"
+
+#define EV_TCP_SERVLET_ACQUIRE EvTcpServletAcquire
+#define EV_TCP_SERVLET_ACQUIRE_SYMBOL DLL_SYMBOL(EV_TCP_SERVLET_ACQUIRE)
+
+#define EV_TCP_SERVLET_RELEASE EvTcpServletRelease
+#define EV_TCP_SERVLET_RELEASE_SYMBOL DLL_SYMBOL(EV_TCP_SERVLET_RELEASE)
+
+///////////////////////////////////////////////////////////////////////
+//  Class: EvTcpServlet
+//
+// Author: $author$
+//   Date: 4/12/2007
+///////////////////////////////////////////////////////////////////////
+class EV_EXPORT_CLASS EvTcpServlet
+: virtual public EvServlet
+{
+public:
+    typedef EvServlet CImplements;
+    typedef EvTcpServlet CDerives;
+
+    ///////////////////////////////////////////////////////////////////////
+    // Function: Initialize
+    //
+    //   Author: $author$
+    //     Date: 7/17/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvError Initialize(EvTcpServletServer& server) = 0;
+    ///////////////////////////////////////////////////////////////////////
+    // Function: Finalize
+    //
+    //   Author: $author$
+    //     Date: 7/17/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvError Finalize(EvTcpServletServer& server) = 0;
+    ///////////////////////////////////////////////////////////////////////
+    // Function: Service
+    //
+    //   Author: $author$
+    //     Date: 4/12/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual EvError Service
+    (EvTcpServletRequest& request,
+     EvTcpServletResponse& response) = 0;
+};
+
+extern "C" {
+
+///////////////////////////////////////////////////////////////////////
+//  Typedef: FEvTcpServletAcquire
+//
+//   Author: $author$
+//     Date: 4/12/2007
+///////////////////////////////////////////////////////////////////////
+typedef EV_PLATFORM_EXPORT EvTcpServlet*
+FEvTcpServletAcquire(EvError& error);
+
+///////////////////////////////////////////////////////////////////////
+//  Typedef: FEvTcpServletRelease
+//
+//   Author: $author$
+//     Date: 4/12/2007
+///////////////////////////////////////////////////////////////////////
+typedef EV_PLATFORM_EXPORT EvError
+FEvTcpServletRelease(EvTcpServlet* servlet);
+
+///////////////////////////////////////////////////////////////////////
+// Function: EV_TCP_SERVLET_ACQUIRE
+//
+//   Author: $author$
+//     Date: 4/12/2007
+///////////////////////////////////////////////////////////////////////
+EV_PLATFORM_EXPORT EvTcpServlet* 
+EV_TCP_SERVLET_ACQUIRE(EvError& error);
+
+///////////////////////////////////////////////////////////////////////
+// Function: EV_TCP_SERVLET_RELEASE
+//
+//   Author: $author$
+//     Date: 4/12/2007
+///////////////////////////////////////////////////////////////////////
+EV_PLATFORM_EXPORT EvError 
+EV_TCP_SERVLET_RELEASE(EvTcpServlet* servlet=0);
+
+} // extern "C"
+#endif // _EVTCPSERVLET_HPP

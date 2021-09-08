@@ -1,0 +1,50 @@
+///////////////////////////////////////////////////////////////////////
+//   File: cevcpsbinaryencoder.hpp
+//
+// Author: $author$
+//   Date: 11/30/2007
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _CEVCPSBINARYENCODER_HPP
+#define _CEVCPSBINARYENCODER_HPP
+
+#include "cevcpsencoder.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: CEvcpsBinaryEncoder
+//
+// Author: $author$
+//   Date: 11/30/2007
+///////////////////////////////////////////////////////////////////////
+class CEvcpsBinaryEncoder
+: public CEvcpsEncoder
+{
+public:
+    typedef CEvcpsEncoder CExtends;
+    typedef CEvcpsBinaryEncoder CDerives;
+
+    ///////////////////////////////////////////////////////////////////////
+    // Constructor: CEvcpsBinaryEncoder
+    //
+    //       Author: $author$
+    //         Date: 11/30/2007
+    ///////////////////////////////////////////////////////////////////////
+    CEvcpsBinaryEncoder
+    (EvcpsBase& value) 
+    : CExtends(value) 
+    {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    // Function: Write
+    //
+    //   Author: $author$
+    //     Date: 11/28/2007
+    ///////////////////////////////////////////////////////////////////////
+    virtual LONG Write
+    (EvCharWriter& writer) 
+    {
+        LONG length = m_value.WriteY(writer);
+        return length;
+    }
+};
+#endif // _CEVCPSBINARYENCODER_HPP

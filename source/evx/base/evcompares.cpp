@@ -1,0 +1,27 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evcompares.cpp
+//
+// Author: $author$
+//   Date: 11/21/2007
+///////////////////////////////////////////////////////////////////////
+
+#include "evcompares.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Class: EvCompares
+//
+// Author: $author$
+//   Date: 11/21/2007
+///////////////////////////////////////////////////////////////////////
+const char* EvCompares::m_name[EV_COMPARES] = 
+{
+    EV_COMPARES_NAME_TRUE,
+    EV_COMPARES_NAME_GT,
+    EV_COMPARES_NAME_LT,
+    EV_COMPARES_NAME_NE,
+    EV_COMPARES_NAME_EQ,
+    EV_COMPARES_NAME_LE,
+    EV_COMPARES_NAME_GE,
+    EV_COMPARES_NAME_FALSE,
+};
+

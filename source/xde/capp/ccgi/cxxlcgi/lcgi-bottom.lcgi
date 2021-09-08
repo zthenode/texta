@@ -1,0 +1,9 @@
+<a name="bottom"/>
+<table width="100%%" border="0" cellspacing="0" cellpadding="0">
+<tr><td>
+%with(%
+%href,%(%left-of-right(%document_location%,/)%)%,%
+%file,%(%right(%document_location%,/)%)%,%
+%%(<a href="%href%/">%href%</a>/<a href="%document_location%#bottom">%file%</a>)%)%
+</td><td><a href="#top">top</a></td></tr>
+</table>

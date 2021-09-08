@@ -1,0 +1,25 @@
+///////////////////////////////////////////////////////////////////////
+//   File: cevcpcharhexdecoder.hpp
+//
+// Author: $author$
+//   Date: 12/6/2007
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _CEVCPCHARHEXDECODER_HPP
+#define _CEVCPCHARHEXDECODER_HPP
+
+#include "cevcphexdecoder.hpp"
+#include "cevcharreader.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Typedef: CEvcpCharHexDecoder
+//
+//   Author: $author$
+//     Date: 12/6/2007
+///////////////////////////////////////////////////////////////////////
+typedef CEvcpHexDecoder
+<char, ULONG, LONG,
+ EvCharReader, CEvCharReader>
+CEvcpCharHexDecoder;
+
+#endif // _CEVCPCHARHEXDECODER_HPP

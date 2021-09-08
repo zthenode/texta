@@ -1,0 +1,25 @@
+///////////////////////////////////////////////////////////////////////
+//   File: evbytereadwritebuffer.hpp
+//
+// Author: $author$
+//   Date: 12/4/2007
+///////////////////////////////////////////////////////////////////////
+
+#ifndef _EVBYTEREADWRITEBUFFER_HPP
+#define _EVBYTEREADWRITEBUFFER_HPP
+
+#include "evbytereader.hpp"
+#include "evbytewriter.hpp"
+
+///////////////////////////////////////////////////////////////////////
+//  Typedef: EvBYTEReadWriteBuffer
+//
+//   Author: $author$
+//     Date: 12/4/2007
+///////////////////////////////////////////////////////////////////////
+typedef EvReadWriteBuffer
+<BYTE, ULONG, LONG, 
+ EvBYTEReader, EvBYTEWriter>
+EvBYTEReadWriteBuffer;
+
+#endif // _EVBYTEREADWRITEBUFFER_HPP
