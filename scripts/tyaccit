@@ -14,28 +14,28 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: tflexit.sh
+#   File: tyaccit.sh
 #
 # Author: $author$
-#   Date: 2/5/2020
+#   Date: 2/5/2020, 9/8/2021
 #
-# script to generate script to generate lexer using tflex
+# script to generate script to generate parser using tyacc
 ########################################################################
+#tflex -+vLI -o$2.cxx $1.l
 if [ "$1" != "" ] && [ "$2" != "" ] && [ "$3" != "" ]; then
 echo '#!/bin/bash'
-echo tflex -+LI -S $3.skl -o $2.cxx $1.l
+echo tyacc -+ld -D $3.hxx -o $2.cxx $1.y
 else
 if [ "$1" != "" ] && [ "$2" != "" ]; then
-tflex -+vLI -o$2.cxx $1.l
 echo '#!/bin/bash'
-echo tflex -+LI -S yylexer.skl -o $2.cxx $1.l
+echo tyacc -+ld -D $2.hxx -o $2.cxx $1.y
 else
 if [ "$1" != "" ]; then
 echo '#!/bin/bash'
-echo tflex -+LI -S yylexer.skl -o $1.cxx $1.l
+echo tyacc -+ld -D $1.hxx -o $1.cxx $1.y
 else
-echo usage `basename $0` source [output] [skeleton] 
-echo tflex -+LI -S skeleton[yylexer.skl] -o output[source.cxx] input[source.l]
+echo usage `basename $0` source [output] [header]
+echo tyacc -+ld -D header[source.hxx] -o output[source.cxx] source.y
 fi
 fi
 fi

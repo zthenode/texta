@@ -1,6 +1,6 @@
 #!/bin/bash
 ########################################################################
-# Copyright (c) 1988-2020 $organization$
+# Copyright (c) 1988-2021 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -14,28 +14,41 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: tyaccit.sh
+#   File: evup
 #
 # Author: $author$
-#   Date: 2/5/2020
+#   Date: 3/31/2021, 9/8/2021
 #
-# script to generate script to generate parser using tyacc
+# evupdate utility script
 ########################################################################
-if [ "$1" != "" ] && [ "$2" != "" ] && [ "$3" != "" ]; then
-echo '#!/bin/bash'
-echo tyacc -+ld -D $3.hxx -o $2.cxx $1.y
-else
+dirname=`dirname $0`
+basename=`basename $0`
+utilname='evupdate-cp'
+matchname='evupdate-match'
+skipname='evupdate-skip'
+
+if [ "$dirname" == "" ]; then
+match=$matchname
+else # [ "$dirname" == "" ]; then
+match=$dirname/$matchname
+fi # [ "$dirname" == "" ]; then
+
+if [ "$dirname" == "" ]; then
+skip=$skipname
+else # [ "$dirname" == "" ]; then
+skip=$dirname/$skipname
+fi # [ "$dirname" == "" ]; then
+
+if [ "$dirname" == "" ]; then
+utility=$utilname
+else # [ "$dirname" == "" ]; then
+utility=$dirname/$utilname
+fi # [ "$dirname" == "" ]; then
+
 if [ "$1" != "" ] && [ "$2" != "" ]; then
-tflex -+vLI -o$2.cxx $1.l
-echo '#!/bin/bash'
-echo tyacc -+ld -D $2.hxx -o $2.cxx $1.y
+$utility -p -m"`$match`" -k"`$skip`" $1 $2 $3 $4 $5 $6 $7 $8 $9
 else
-if [ "$1" != "" ]; then
-echo '#!/bin/bash'
-echo tyacc -+ld -D $1.hxx -o $1.cxx $1.y
-else
-echo usage `basename $0` source [output] [header] 
-echo tyacc -+ld -D header[source.hxx] -o output[source.cxx] source.y
-fi
-fi
+echo $utilname utility script
+echo usage $basename sourcedir targetdir
+echo $utility -p -m'"`'$match'`"' -k'"`'$skip'`"' '$1' '$2' '$3' '$4' '$5' '$6' '$7' '$8' '$9'
 fi
