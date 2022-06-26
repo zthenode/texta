@@ -76,3 +76,7 @@ txtcgi_LIBS += \
 $${texta_LIBS} \
 $${xde_LIBS} \
 $${xdedebug_LIBS} \
+
+########################################################################
+# NO Qt
+QT -= gui core
