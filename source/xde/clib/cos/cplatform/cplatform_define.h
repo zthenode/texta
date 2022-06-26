@@ -70,6 +70,10 @@
 
 #pragma warning(disable:4250) // derived 'class' inherits 'base::member' via dominance
 #pragma warning(disable:4355) // 'this' used in base member initializer list
+
+#define PLATFORM_EXPORT __declspec(dllexport)
+#define PLATFORM_IMPORT __declspec(dllimport)
+
 /*
  * Windows
  **/

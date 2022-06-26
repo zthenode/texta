@@ -2,7 +2,7 @@
 //   File: evdebug.h
 //
 // Author: $author$
-//   Date: 4/3/2007
+//   Date: 4/3/2007, 10/5/2021
 //
 //    $Id$
 ///////////////////////////////////////////////////////////////////////
@@ -60,7 +60,22 @@ enum
 	EV_ALL_DEBUG_LEVELS  = (EV_NEXT_DEBUG_LEVEL - 1)
 };
 
+#if !defined(DEFAULT_EV_DEBUG_LEVELS_VALUE)
+#if defined(DEFAULT_LOGGING_LEVELS_ERROR)
+#define DEFAULT_EV_DEBUG_LEVELS_VALUE EV_DEBUG_LEVEL_ERROR
+#endif // defined(DEFAULT_LOGGING_LEVELS_ERROR)
+#endif // !defined(DEFAULT_EV_DEBUG_LEVELS_VALUE)
+
+#if !defined(DEFAULT_EV_DEBUG_LEVELS_VALUE)
+#if defined(DEFAULT_EV_DEBUG_LEVEL_ERROR)
+#define DEFAULT_EV_DEBUG_LEVELS_VALUE EV_DEBUG_LEVEL_ERROR
+#endif // defined(DEFAULT_EV_DEBUG_LEVEL_ERROR)
+#endif // !defined(DEFAULT_EV_DEBUG_LEVELS_VALUE)
+
+#if !defined(DEFAULT_EV_DEBUG_LEVELS_VALUE)
 #define DEFAULT_EV_DEBUG_LEVELS_VALUE EV_ALL_DEBUG_LEVELS
+#endif // !defined(DEFAULT_EV_DEBUG_LEVELS_VALUE)
+
 #define DEFAULT_EV_DEBUG_LEVELS EV_DEBUG_LEVELS
 
 #define EV_DEBUG_LEVEL_ERROR_NAME "error: "
@@ -98,12 +113,21 @@ typedef int EvDebugLevels;
 extern "C" {
 #endif
 
+#if defined(NO_EV_DEBUG_EXPORT) 
+#if !defined(EV_DEBUG_EXTERN) 
+#define EV_DEBUG_EXTERN extern
+#endif // !defined(EV_DEBUG_EXTERN)
+#endif // defined(NO_EV_DEBUG_EXPORT) 
+
+#if !defined(EV_DEBUG_EXTERN) 
 #if defined(EV_DEBUG_EXPORT) 
-EV_PLATFORM_EXPORT extern
+#define EV_DEBUG_EXTERN EV_PLATFORM_EXPORT extern
 #else // defined(EV_DEBUG_EXPORT) 
-EV_PLATFORM_IMPORT extern
+#define EV_DEBUG_EXTERN EV_PLATFORM_IMPORT extern
 #endif // defined(EV_DEBUG_EXPORT)
-EvDebugLevels g_evDebugLevels;
+#endif // !defined(EV_DEBUG_EXTERN)
+
+EV_DEBUG_EXTERN EvDebugLevels g_evDebugLevels;
 
 #if defined(__cplusplus)
 }

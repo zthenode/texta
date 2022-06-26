@@ -43,6 +43,7 @@ typedef DWORD MODE;
 typedef int MODE_T;
 
 typedef HANDLE INVALID_HANDLE_T;
+#define INVALID_HANDLE INVALID_HANDLE_VALUE
 typedef HANDLE NULL_HANDLE_T;
 #define NULL_HANDLE_VALUE NULL
 
@@ -68,6 +69,8 @@ typedef WORD word_t;
 typedef UINT uint;
 typedef USHORT ushort;
 typedef ULONG ulong;
+
+typedef INT64 useconds_t;
 /*
  * Windows
  **/

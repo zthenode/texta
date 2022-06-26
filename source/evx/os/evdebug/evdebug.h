@@ -2,11 +2,10 @@
 //   File: evdebug.h
 //
 // Author: $author$
-//   Date: 11/29/2019
+//   Date: 11/29/2019, 10/5/2021
 //
 //    $Id$
 ///////////////////////////////////////////////////////////////////////
-
 #ifndef _EVDEBUG_H
 #define _EVDEBUG_H
 
@@ -62,6 +61,12 @@ enum
 };
 
 #if !defined(DEFAULT_EV_DEBUG_LEVELS_VALUE)
+#if defined(DEFAULT_LOGGING_LEVELS_ERROR)
+#define DEFAULT_EV_DEBUG_LEVELS_VALUE EV_DEBUG_LEVEL_ERROR
+#endif // defined(DEFAULT_LOGGING_LEVELS_ERROR)
+#endif // !defined(DEFAULT_EV_DEBUG_LEVELS_VALUE)
+
+#if !defined(DEFAULT_EV_DEBUG_LEVELS_VALUE)
 #if defined(DEFAULT_EV_DEBUG_LEVEL_ERROR)
 #define DEFAULT_EV_DEBUG_LEVELS_VALUE EV_DEBUG_LEVEL_ERROR
 #endif // defined(DEFAULT_EV_DEBUG_LEVEL_ERROR)
@@ -108,29 +113,26 @@ typedef int EvDebugLevels;
 extern "C" {
 #endif
 
-#if defined(EV_DEBUG_EXPORT) 
-EV_PLATFORM_EXPORT extern
-#else // defined(EV_DEBUG_EXPORT) 
-EV_PLATFORM_IMPORT extern
-#endif // defined(EV_DEBUG_EXPORT)
-EvDebugLevels g_evDebugLevels;
+#if defined(NO_EV_DEBUG_EXPORT) 
+#if !defined(EV_DEBUG_EXTERN) 
+#define EV_DEBUG_EXTERN extern
+#endif // !defined(EV_DEBUG_EXTERN)
+#endif // defined(NO_EV_DEBUG_EXPORT) 
 
+#if !defined(EV_DEBUG_EXTERN) 
 #if defined(EV_DEBUG_EXPORT) 
-EV_PLATFORM_EXPORT extern
+#define EV_DEBUG_EXTERN EV_PLATFORM_EXPORT extern
 #else // defined(EV_DEBUG_EXPORT) 
-EV_PLATFORM_IMPORT extern
+#define EV_DEBUG_EXTERN EV_PLATFORM_IMPORT extern
 #endif // defined(EV_DEBUG_EXPORT)
-int EvDebugPrintFormatted(const char* format, ...);
+#endif // !defined(EV_DEBUG_EXTERN)
 
-#if defined(EV_DEBUG_EXPORT) 
-EV_PLATFORM_EXPORT extern
-#else // defined(EV_DEBUG_EXPORT) 
-EV_PLATFORM_IMPORT extern
-#endif // defined(EV_DEBUG_EXPORT)
-int EvDebugPrintFormattedV(const char* format, va_list va);
+EV_DEBUG_EXTERN EvDebugLevels g_evDebugLevels;
+EV_DEBUG_EXTERN int EvDebugPrintFormatted(const char* format, ...);
+EV_DEBUG_EXTERN int EvDebugPrintFormattedV(const char* format, va_list va);
 
 #if defined(__cplusplus)
 }
 #endif
 
-#endif // _EVDEBUG_H
+#endif // _OS_EVDEBUG_EVDEBUG_H

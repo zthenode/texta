@@ -16,10 +16,16 @@
 ///   File: main.cpp
 ///
 /// Author: $author$
-///   Date: 4/14/2020
+///   Date: 4/14/2020, 6/26/2022
 ///////////////////////////////////////////////////////////////////////
 #include "xos/app/console/language/texta/main.hpp"
 #include "xos/language/texta/processor/xde/implemented.hpp"
+
+#if defined(XOS_CONSOLE_MAIN_MAIN)
+#if !defined(XOS_APP_CONSOLE_LANGUAGE_TEXTA_MAIN_INSTANCE)
+#define XOS_APP_CONSOLE_LANGUAGE_TEXTA_MAIN_INSTANCE
+#endif /// !defined(XOS_APP_CONSOLE_LANGUAGE_TEXTA_MAIN_NSTANCE)
+#endif /// defined(XOS_CONSOLE_MAIN_MAIN)
 
 namespace xos {
 namespace app {

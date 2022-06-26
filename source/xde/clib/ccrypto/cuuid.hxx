@@ -24,7 +24,11 @@
 #define CUUID_HXX
 
 #include "ccryptobase.hxx"
+#if defined(WINDOWS)
+#include "cuuidentifier.hxx"
+#else /// defined(WINDOWS)
 #include "xos/network/universal/unique/os/identifier.hpp"
+#endif /// defined(WINDOWS)
 
 /**
  **********************************************************************
@@ -36,7 +40,11 @@
  */
 class cUuid: public cCryptoBase {
 protected:
+#if defined(WINDOWS)
+    cUUIdentifier  m_identifier;
+#else /// defined(WINDOWS)
     xos::network::universal::unique::os::identifier m_identifier;
+#endif ///defined(WINDOWS)
 public:
     typedef cCryptoBase cExtends;
     typedef cUuid cDerives;
@@ -61,6 +69,12 @@ public:
      **********************************************************************
      */
     virtual BOOL Generate(cString& id) {
+#if defined(WINDOWS)
+        if ((m_identifier.Generate(id))) {
+            return TRUE;
+        } else {
+        }
+#else /// defined(WINDOWS)
         if ((m_identifier.generate())) {
             const char* chars = 0; size_t length = 0;
             if ((chars = m_identifier.string().chars(length))) {
@@ -68,6 +82,7 @@ public:
                 return TRUE;
             }
         }
+#endif /// defined(WINDOWS)
         return FALSE;
     }
 }; /* class cUuid */
