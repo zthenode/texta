@@ -16,10 +16,10 @@
 ///   File: main.cpp
 ///
 /// Author: $author$
-///   Date: 4/14/2020, 6/26/2022
+///   Date: 4/14/2020, 7/26/2022
 ///////////////////////////////////////////////////////////////////////
 #include "xos/app/console/language/texta/main.hpp"
-#include "xos/language/texta/processor/xde/implemented.hpp"
+#include "xos/language/texta/processor/implemented.hpp"
 
 #if defined(XOS_CONSOLE_MAIN_MAIN)
 #if !defined(XOS_APP_CONSOLE_LANGUAGE_TEXTA_MAIN_INSTANCE)
@@ -34,9 +34,9 @@ namespace language {
 namespace texta {
 
 #if defined(XOS_APP_CONSOLE_LANGUAGE_TEXTA_MAIN_INSTANCE)
-#if !defined(XOS_LANGUAGE_TEXTA_PROCESSOR_XDE_IMPLEMENTED_INSTANCE)
-static xos::language::texta::processor::xde::implemented the_processor;
-#endif /// !defined(XOS_LANGUAGE_TEXTA_PROCESSOR_XDE_IMPLEMENTED_INSTANCE)
+#if !defined(XOS_LANGUAGE_TEXTA_PROCESSOR_IMPLEMENTED_INSTANCE)
+static xos::language::texta::processor::implemented the_processor;
+#endif /// !defined(XOS_LANGUAGE_TEXTA_PROCESSOR_IMPLEMENTED_INSTANCE)
 #endif /// defined(XOS_APP_CONSOLE_LANGUAGE_TEXTA_MAIN_INSTANCE)
 
 /// class maint

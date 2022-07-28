@@ -1,0 +1,367 @@
+///////////////////////////////////////////////////////////////////////
+/// Copyright (c) 1988-2016 $organization$
+///
+/// This software is provided by the author and contributors ``as is''
+/// and any express or implied warranties, including, but not limited to,
+/// the implied warranties of merchantability and fitness for a particular
+/// purpose are disclaimed. In no event shall the author or contributors
+/// be liable for any direct, indirect, incidental, special, exemplary,
+/// or consequential damages (including, but not limited to, procurement
+/// of substitute goods or services; loss of use, data, or profits; or
+/// business interruption) however caused and on any theory of liability,
+/// whether in contract, strict liability, or tort (including negligence
+/// or otherwise) arising in any way out of the use of this software,
+/// even if advised of the possibility of such damage.
+///
+///   File: file_functions.cpp
+///
+/// Author: $author$
+///   Date: 3/22/2016
+///////////////////////////////////////////////////////////////////////
+#include "texta/t/functions.hpp"
+
+namespace texta {
+namespace t {
+
+///////////////////////////////////////////////////////////////////////
+///  Class: filebase_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS filebase_function: public function_extend {
+public:
+    typedef function_extend Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    filebase_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument_list &args) const {
+        function_argument *a = 0;
+        if ((a = args.first_argument())) {
+            function_argument path;
+            do {
+                path.append(*a);
+            } while ((a = a->next_argument()));
+            expand(out, p, path);
+        }
+        return true;
+    }
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument &arg) const {
+        fs::path path(arg.chars());
+        out.write(path.file_base_path());
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_filebase_function
+  ("filebase", "filebase(string,...)");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: filedrive_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS filedrive_function: public filebase_function {
+public:
+    typedef filebase_function Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    filedrive_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument &arg) const {
+        fs::path path(arg.chars());
+        out.write(path.volume());
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_filedrive_function
+  ("filedrive", "filedrive(string,...)"),
+  the_filevolume_function
+  ("filevolume", "filevolume(string,...)");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: fileextension_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS fileextension_function: public filebase_function {
+public:
+    typedef filebase_function Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    fileextension_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument &arg) const {
+        fs::path path(arg.chars());
+        out.write(path.file_extension());
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_fileextension_function
+  ("fileextension", "fileextension(string,...)");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: filename_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS filename_function: public filebase_function {
+public:
+    typedef filebase_function Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    filename_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument &arg) const {
+        fs::path path(arg.chars());
+        out.write(path.file_name());
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_filename_function
+  ("filename", "filename(string,...)");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: filepath_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS filepath_function: public filebase_function {
+public:
+    typedef filebase_function Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    filepath_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument &arg) const {
+        fs::path path(arg.chars());
+        out.write(path.file_path());
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_filepath_function
+  ("filepath", "filepath(string,...)");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: filepath_separator_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS filepath_separator_function: public function_extend {
+public:
+    typedef function_extend Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    filepath_separator_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument_list &args) const {
+        fs::path path;
+        out.write(&path.directory_separator(), 1);
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_filepath_separator_function
+  ("filepath-separator", "filepath-separator()");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: fileextension_separator_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS fileextension_separator_function: public function_extend {
+public:
+    typedef function_extend Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    fileextension_separator_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument_list &args) const {
+        fs::path path;
+        out.write(&path.extension_separator(), 1);
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_fileextension_separator_function
+  ("fileextension-separator", "fileextension-separator()");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: filevolume_separator_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS filevolume_separator_function: public function_extend {
+public:
+    typedef function_extend Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    filevolume_separator_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument_list &args) const {
+        fs::path path;
+        out.write(&path.volume_separator(), 1);
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_filevolume_separator_function
+  ("filevolume-separator", "filevolume-separator()");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: getenv_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS getenv_function: public filebase_function {
+public:
+    typedef filebase_function Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    getenv_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument &arg) const {
+        const char *chars = 0;
+        if ((chars = arg.chars()) && (chars[0])) {
+            if ((chars = getenv(chars))) {
+                out.write(chars);
+            }
+        }
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_getenv_function
+  ("getenv", "getenv(string,...)");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: import_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS import_function: public filebase_function {
+public:
+    typedef filebase_function Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    import_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p,
+     const function_argument &arg) const {
+        const char *chars = 0;
+        if ((chars = arg.chars()) && (chars[0])) {
+            input_file f;
+            if ((f.open(chars))) {
+                expand(out, p, f);
+                f.close();
+            }
+        }
+        return true;
+    }
+    virtual bool expand
+    (output &out, processor &p, input_file &f) const {
+        ssize_t count = 0;
+        char c = 0;
+        while (0 < (count = f.read(&c, 1))) {
+            out.write(&c, 1);
+        }
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_import_function
+  ("import", "import(location,...)");
+
+///////////////////////////////////////////////////////////////////////
+///  Class: include_function
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS include_function: public import_function {
+public:
+    typedef import_function Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    include_function(const char *name, const char *description)
+    : Extends(name, description) {
+        static function_parameter parameter[]
+        = {{0,0}};
+        set_parameter(parameter);
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool expand
+    (output &out, processor &p, input_file &f) const {
+        p.expand(out, f);
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+} the_include_function
+  ("include", "include(location,...)");
+
+} // namespace t
+} // namespace texta
