@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!--
+=====================================================================
+=== Copyright (c) 1988-2021 $organization$
+===
+=== This software is provided by the author and contributors ``as is'' 
+=== and any express or implied warranties, including, but not limited to, 
+=== the implied warranties of merchantability and fitness for a particular 
+=== purpose are disclaimed. In no event shall the author or contributors 
+=== be liable for any direct, indirect, incidental, special, exemplary, 
+=== or consequential damages (including, but not limited to, procurement 
+=== of substitute goods or services; loss of use, data, or profits; or 
+=== business interruption) however caused and on any theory of liability, 
+=== whether in contract, strict liability, or tort (including negligence 
+=== or otherwise) arising in any way out of the use of this software, 
+=== even if advised of the possibility of such damage.
+===
+===   File: xdedebug.vsprops
+===
+=== Author: $author$
+===   Date: 10/7/2021
+=====================================================================
+-->
+<VisualStudioPropertySheet
+    ProjectType="Visual C++"
+    Version="8.00"
+    Name="xdedebug">
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="XDEDEBUG_GROUP"
+        Value=""
+    />
+    <UserMacro
+        Name="XDEDEBUG_NAME"
+        Value="texta"
+    />
+    <UserMacro
+        Name="XDEDEBUG_VERSION"
+        Value=""
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="XDEDEBUG_DIR"
+        Value="$(XDEDEBUG_GROUP)$(XDEDEBUG_NAME)$(XDEDEBUG_VERSION)"
+    />
+    <UserMacro
+        Name="XDEDEBUG_SOURCE_DIR"
+        Value="$(SOURCE_ROOT_DIR)/$(XDEDEBUG_DIR)/source"
+    />
+    <UserMacro
+        Name="XDEDEBUG_BUILD_DIR"
+        Value="$(SOURCE_BUILD_DIR)/$(XDEDEBUG_DIR)/build"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="XDEDEBUG_BUILD"
+        Value="$(XDEDEBUG_BUILD_DIR)/$(PlatformName)/$(VCVersion)/$(ConfigurationName)"
+    />
+    <UserMacro
+        Name="XDEDEBUG_OBJ"
+        Value="$(XDEDEBUG_BUILD)/obj/$(ProjectName)"
+    />
+    <UserMacro
+        Name="XDEDEBUG_LIB"
+        Value="$(XDEDEBUG_BUILD)/lib"
+    />
+    <UserMacro
+        Name="XDEDEBUG_BIN"
+        Value="$(XDEDEBUG_BUILD)/bin"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="XDEDEBUG_DEFINES"
+        Value="DB_PRINTF=platform_db_printf;DB_VPRINTF=platform_db_vprintf;XOS_LIB_XDEDEBUG_VERSION_BUILD_DATE=10/7/2021"
+    />
+    <UserMacro
+        Name="XDEDEBUG_DEBUG_DEFINES"
+        Value="$(XDEDEBUG_DEFINES)"
+    />
+    <UserMacro
+        Name="XDEDEBUG_RELEASE_DEFINES"
+        Value="$(XDEDEBUG_DEFINES)"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+  
+    <UserMacro
+        Name="XDEDEBUG_SRC"
+        Value="$(XDE_SOURCE_DIR)/xde"
+   />
+    <UserMacro
+        Name="XDEDEBUG_INCLUDE_DIRS"
+        Value="$(XDEDEBUG_SRC)"
+    />
+    <UserMacro
+        Name="XDEDEBUG_LIB_DIRS"
+        Value="$(XDEDEBUG_LIB)"
+    />
+    <UserMacro
+        Name="XDEDEBUG_LIBS"
+        Value="libxdedebug.lib"
+    />
+
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+</VisualStudioPropertySheet>
+<!--
+=====================================================================
+$(XDEDEBUG_BIN)
+$(XDEDEBUG_LIB)
+$(XDEDEBUG_OBJ)
+..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\windows.vsprops;..\..\xdedebug.vsprops
+$(XDEDEBUG_INCLUDE_DIRS)
+$(XDEDEBUG_LIB_DIRS)
+$(XDEDEBUG_LIBS)
+$(XDEDEBUG_DEBUG_DEFINES)
+$(XDEDEBUG_RELEASE_DEFINES)
+$(XDEDEBUG_EXE_DEBUG_DEFINES)
+$(XDEDEBUG_EXE_RELEASE_DEFINES)
+=====================================================================
+-->

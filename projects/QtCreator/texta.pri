@@ -16,11 +16,11 @@
 #   File: texta.pri
 #
 # Author: $author$
-#   Date: 9/6/2021
+#   Date: 9/6/2021, 7/27/2022
 #
 # QtCreator .pri file for texta
 ########################################################################
-# depends xde;rostra;nadir;fila;crono;cifra;rete;stara
+# depends xde;medusade;rostra;nadir;fila;crono;cifra;rete;stara
 
 OTHER_PKG = ../../../../../..
 OTHER_PRJ = ../../../../..
@@ -93,16 +93,6 @@ DB_PRINTF=platform_db_printf \
 DB_VPRINTF=platform_db_vprintf \
 $${build_xde_DEFINES} \
 
-# xde t function SOURCES
-#
-xde_t_function_SOURCES += \
-$${XDE_SRC}/clib/ct/ctfunctions.cxx \
-$${XDE_SRC}/clib/ct/ctfilefunctions.cxx \
-$${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
-$${XDE_SRC}/clib/ct/ctconditionalfunctions.cxx \
-$${XDE_SRC}/clib/ct/ctstringfunctions.cxx \
-$${XDE_SRC}/clib/ct/ctcrypto/ctuuidfunction.cxx \
-
 # xde LIBS
 #
 xde_LIBS += \
@@ -114,6 +104,177 @@ xde_LIBS += \
 xdedebug_LIBS += \
 -L$${XDE_LIB}/lib$${XDE_LIBRARY_NAME}debug \
 -l$${XDE_LIBRARY_NAME}debug \
+
+# xde t function HEADERS
+#
+xde_t_function_HEADERS += \
+
+# xde t function SOURCES
+#
+xde_t_function_SOURCES += \
+$${XDE_SRC}/clib/ct/ctfunctions.cxx \
+$${XDE_SRC}/clib/ct/ctfilefunctions.cxx \
+$${XDE_SRC}/clib/ct/ctdatefunctions.cxx \
+$${XDE_SRC}/clib/ct/ctconditionalfunctions.cxx \
+$${XDE_SRC}/clib/ct/ctstringfunctions.cxx \
+$${XDE_SRC}/clib/ct/ctcrypto/ctuuidfunction.cxx \
+
+########################################################################
+# medusade
+MEDUSADE_VERSION_MAJOR = 0
+MEDUSADE_VERSION_MINOR = 0
+MEDUSADE_VERSION_RELEASE = 0
+MEDUSADE_VERSION = $${MEDUSADE_VERSION_MAJOR}.$${MEDUSADE_VERSION_MINOR}.$${MEDUSADE_VERSION_RELEASE}
+MEDUSADE_NAME = medusade
+MEDUSADE_GROUP = $${MEDUSADE_NAME}
+MEDUSADE_SOURCE = source
+MEDUSADE_DIR = $${MEDUSADE_GROUP}/$${MEDUSADE_NAME}-$${MEDUSADE_VERSION}
+MEDUSADE_PKG_DIR = $${MEDUSADE_NAME}
+MEDUSADE_BUILD_HOME = $${HOME}
+MEDUSADE_HOME_BUILD = $${MEDUSADE_BUILD_HOME}/build/$${MEDUSADE_NAME}
+MEDUSADE_HOME_BUILD_INCLUDE = $${MEDUSADE_HOME_BUILD}/include
+MEDUSADE_HOME_BUILD_LIB = $${MEDUSADE_HOME_BUILD}/lib
+MEDUSADE_THIRDPARTY_PKG = $${THIRDPARTY_PKG}/$${MEDUSADE_DIR}
+MEDUSADE_THIRDPARTY_PRJ = $${THIRDPARTY_PRJ}/$${MEDUSADE_DIR}
+MEDUSADE_THIRDPARTY_SRC = $${THIRDPARTY_SRC}/$${MEDUSADE_PKG_DIR}
+MEDUSADE_THIRDPARTY_SRC_GROUP = $${MEDUSADE_GROUP}
+MEDUSADE_THIRDPARTY_SRC_NAME = $${MEDUSADE_NAME}
+MEDUSADE_THIRDPARTY_SRC_DIR = $${THIRDPARTY_SRC}/$${MEDUSADE_THIRDPARTY_SRC_GROUP}/$${MEDUSADE_THIRDPARTY_SRC_NAME} 
+MEDUSADE_THIRDPARTY_SOURCE = $${MEDUSADE_SOURCE}/thirdparty
+MEDUSADE_PKG = $${OTHER_PKG}/$${MEDUSADE_PKG_DIR}
+MEDUSADE_PRJ = $${OTHER_PRJ}/$${MEDUSADE_PKG_DIR}
+#MEDUSADE_SRC = $${MEDUSADE_THIRDPARTY_SRC_DIR}
+#MEDUSADE_SRC = $${MEDUSADE_THIRDPARTY_PKG}/$${MEDUSADE_SOURCE}
+#MEDUSADE_SRC = $${MEDUSADE_THIRDPARTY_PRJ}/$${MEDUSADE_SOURCE}
+#MEDUSADE_SRC = $${MEDUSADE_PKG}/$${MEDUSADE_SOURCE}
+#MEDUSADE_SRC = $${MEDUSADE_PRJ}/$${MEDUSADE_SOURCE}
+MEDUSADE_SRC = $${OTHER_PRJ}/source/$${MEDUSADE_NAME}
+MEDUSADE_BLD = ../..
+MEDUSADE_LIB = $${MEDUSADE_BLD}/lib
+MEDUSADE_LIBRARY_NAME = $${MEDUSADE_NAME}
+
+MEDUSADE_NADIR_SRC += $${MEDUSADE_SRC}/nadir
+medusade_nadir_INCLUDEPATH += $${MEDUSADE_NADIR_SRC}
+medusade_nadir_DEFINES += NO_USE_NADIR_BASE NO_USE_XOS_LOGGER_INTERFACE 
+
+MEDUSADE_ROSTRA_SRC += $${MEDUSADE_SRC}/rostra
+medusade_rostra_INCLUDEPATH += $${MEDUSADE_ROSTRA_SRC} 
+medusade_rostra_DEFINES += 
+
+MEDUSADE_MEDUSA_SRC += $${MEDUSADE_SRC}/medusa
+medusade_medusa_INCLUDEPATH += $${MEDUSADE_MEDUSA_SRC} 
+medusade_medusa_DEFINES += 
+
+MEDUSADE_CORAL_SRC += $${MEDUSADE_SRC}/coral
+medusade_coral_INCLUDEPATH += $${MEDUSADE_CORAL_SRC} 
+medusade_coral_DEFINES += 
+
+MEDUSADE_TALAS_SRC += $${MEDUSADE_SRC}/talas
+medusade_talas_INCLUDEPATH += $${MEDUSADE_TALAS_SRC} 
+medusade_talas_DEFINES += 
+
+MEDUSADE_TEXTA_SRC += $${MEDUSADE_SRC}/texta
+medusade_texta_INCLUDEPATH += $${MEDUSADE_TEXTA_SRC} 
+medusade_texta_DEFINES += 
+
+# medusade INCLUDEPATH
+#
+medusade_INCLUDEPATH += \
+$${medusade_texta_INCLUDEPATH} \
+$${medusade_coral_INCLUDEPATH} \
+$${medusade_medusa_INCLUDEPATH} \
+$${medusade_talas_INCLUDEPATH} \
+$${medusade_rostra_INCLUDEPATH} \
+$${medusade_nadir_INCLUDEPATH} \
+
+# medusade DEFINES
+#
+medusade_DEFINES += \
+$${medusade_nadir_DEFINES} \
+$${medusade_rostra_DEFINES} \
+$${medusade_talas_DEFINES} \
+$${medusade_medusa_DEFINES} \
+$${medusade_coral_DEFINES} \
+$${medusade_texta_DEFINES} \
+
+# medusade HEADERS
+#
+medusade_HEADERS += \
+$${MEDUSADE_NADIR_SRC}/thirdparty/gnu/glibc/posix/execvpe.h \
+$${MEDUSADE_NADIR_SRC}/xos/io/main/logger.hpp \
+$${MEDUSADE_NADIR_SRC}/xos/base/getopt/main_opt.hpp \
+
+# medusade SOURCES
+#
+medusade_SOURCES += \
+$${MEDUSADE_NADIR_SRC}/thirdparty/gnu/glibc/posix/execvpe.c \
+$${MEDUSADE_NADIR_SRC}/xos/io/main/logger.cpp \
+$${MEDUSADE_NADIR_SRC}/xos/base/getopt/main_opt.cpp \
+
+# medusade talas hash HEADERS
+#
+medusade_talas_hash_HEADERS += \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/openssl/sha512.hpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/sha512.hpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/openssl/sha256.hpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/sha256.hpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/openssl/sha1.hpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/sha1.hpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/openssl/md5.hpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/md5.hpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/mac.hpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/base.hpp \
+
+# medusade talas hash SOURCES
+#
+medusade_talas_hash_SOURCES += \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/openssl/sha512.cpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/openssl/sha256.cpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/openssl/sha1.cpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/openssl/md5.cpp \
+$${MEDUSADE_TALAS_SRC}/talas/crypto/hash/mac.cpp \
+
+# medusade texta function HEADERS
+#
+medusade_texta_function_HEADERS += \
+$${MEDUSADE_TEXTA_SRC}/texta/t/network_functions.hpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/hash_functions.hpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/file_functions.hpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/string_functions.hpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/time_functions.hpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/logical_functions.hpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/conditional_functions.hpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/block_functions.hpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/base_functions.hpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/functions.hpp \
+
+# medusade texta function SOURCES
+#
+medusade_texta_function_SOURCES += \
+$${MEDUSADE_TEXTA_SRC}/texta/t/network_functions.cpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/hash_functions.cpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/file_functions.cpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/string_functions.cpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/time_functions.cpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/logical_functions.cpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/conditional_functions.cpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/block_functions.cpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/base_functions.cpp \
+$${MEDUSADE_TEXTA_SRC}/texta/t/functions.cpp \
+
+# medusade texta HEADERS
+#
+medusade_texta_HEADERS += \
+$${medusade_HEADERS} \
+$${medusade_talas_hash_HEADERS} \
+$${medusade_texta_function_HEADERS} \
+
+# medusade texta SOURCES
+#
+medusade_texta_SOURCES += \
+$${medusade_SOURCES} \
+$${medusade_talas_hash_SOURCES} \
+$${medusade_texta_function_SOURCES} \
 
 ########################################################################
 # rostra
@@ -400,7 +561,6 @@ texta_DEFINES += RELEASE_BUILD
 # texta INCLUDEPATH
 #
 texta_INCLUDEPATH += \
-$${TEXTA_SRC}/xde \
 $${TEXTA_SRC} \
 $${stara_INCLUDEPATH} \
 $${rete_INCLUDEPATH} \
@@ -409,13 +569,11 @@ $${crono_INCLUDEPATH} \
 $${fila_INCLUDEPATH} \
 $${nadir_INCLUDEPATH} \
 $${rostra_INCLUDEPATH} \
-$${xde_INCLUDEPATH} \
 $${build_texta_INCLUDEPATH} \
 
 # texta DEFINES
 #
 texta_DEFINES += \
-$${xde_DEFINES} \
 $${rostra_DEFINES} \
 $${nadir_DEFINES} \
 $${fila_DEFINES} \
@@ -441,7 +599,6 @@ textadebug_LIBS += \
 # texta xde INCLUDEPATH
 #
 texta_xde_INCLUDEPATH += \
-$${TEXTA_SRC}/xde \
 $${xde_INCLUDEPATH} \
 $${texta_INCLUDEPATH} \
 
@@ -450,3 +607,72 @@ $${texta_INCLUDEPATH} \
 texta_xde_DEFINES += \
 $${texta_DEFINES} \
 $${xde_DEFINES} \
+
+########################################################################
+# texta medusade INCLUDEPATH
+#
+texta_medusade_INCLUDEPATH += \
+$${medusade_INCLUDEPATH} \
+$${texta_INCLUDEPATH} \
+
+# texta medusade DEFINES
+#
+texta_medusade_DEFINES += \
+$${texta_DEFINES} \
+$${medusade_DEFINES} \
+
+########################################################################
+# texta xde implemented HEADERS
+#
+texta_xde_implemented_HEADERS += \
+$${xde_t_function_HEADERS} \
+$${NADIR_SRC}/xos/console/main_main.hpp \
+$${TEXTA_SRC}/xos/language/texta/processor/exception.hpp \
+$${TEXTA_SRC}/xos/language/texta/processor/observer.hpp \
+$${TEXTA_SRC}/xos/language/texta/processor/implement.hpp \
+$${TEXTA_SRC}/xos/language/texta/processor/xde/implemented.hpp \
+$${TEXTA_SRC}/xos/language/texta/processor/xde/cTInput.hpp \
+$${TEXTA_SRC}/xos/language/texta/processor/xde/cTOutput.hpp \
+
+#$${TEXTA_SRC}/xos/app/console/language/texta/main_opt.hpp \
+
+# texta xde implemented SOURCES
+#
+texta_xde_implemented_SOURCES += \
+$${xde_t_function_SOURCES} \
+$${NADIR_SRC}/xos/console/main_main.cpp \
+$${TEXTA_SRC}/xos/language/texta/processor/exception.cpp \
+$${TEXTA_SRC}/xos/language/texta/processor/observer.cpp \
+$${TEXTA_SRC}/xos/language/texta/processor/implement.cpp \
+$${TEXTA_SRC}/xos/language/texta/processor/xde/implemented.cpp \
+$${TEXTA_SRC}/xos/language/texta/processor/xde/cTInput.cpp \
+$${TEXTA_SRC}/xos/language/texta/processor/xde/cTOutput.cpp \
+
+#$${TEXTA_SRC}/xos/app/console/language/texta/main_opt.cpp \
+
+# texta xde implemented LIBS
+#
+texta_xde_implemented_LIBS += \
+
+########################################################################
+# texta implemented HEADERS
+#
+texta_implemented_HEADERS += \
+$${NADIR_SRC}/xos/console/main_main.hpp \
+$${TEXTA_SRC}/xos/language/texta/processor/exception.hpp \
+$${TEXTA_SRC}/xos/language/texta/processor/observer.hpp \
+$${TEXTA_SRC}/xos/language/texta/processor/implement.hpp \
+$${TEXTA_SRC}/xos/app/console/language/texta/main_opt.hpp \
+
+# texta implemented SOURCES
+#
+texta_implemented_SOURCES += \
+$${NADIR_SRC}/xos/console/main_main.cpp \
+$${TEXTA_SRC}/xos/language/texta/processor/exception.cpp \
+$${TEXTA_SRC}/xos/language/texta/processor/observer.cpp \
+$${TEXTA_SRC}/xos/language/texta/processor/implement.cpp \
+$${TEXTA_SRC}/xos/app/console/language/texta/main_opt.cpp \
+
+# texta implemented LIBS
+#
+texta_implemented_LIBS += \

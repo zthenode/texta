@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!--
+=====================================================================
+=== Copyright (c) 1988-2021 $organization$
+===
+=== This software is provided by the author and contributors ``as is'' 
+=== and any express or implied warranties, including, but not limited to, 
+=== the implied warranties of merchantability and fitness for a particular 
+=== purpose are disclaimed. In no event shall the author or contributors 
+=== be liable for any direct, indirect, incidental, special, exemplary, 
+=== or consequential damages (including, but not limited to, procurement 
+=== of substitute goods or services; loss of use, data, or profits; or 
+=== business interruption) however caused and on any theory of liability, 
+=== whether in contract, strict liability, or tort (including negligence 
+=== or otherwise) arising in any way out of the use of this software, 
+=== even if advised of the possibility of such damage.
+===
+===   File: windows.vsprops
+===
+=== Author: $author$
+===   Date: 10/5/2021
+=====================================================================
+-->
+<VisualStudioPropertySheet
+    ProjectType="Visual C++"
+    Version="8.00"
+    Name="windows">
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="REPO_DIR"
+        Value="../../../../../.."
+    />
+    <UserMacro
+        Name="ROSTRA_SOURCE_DIR"
+        Value="$(REPO_DIR)/rostra/source"
+    />
+    <UserMacro
+        Name="NADIR_SOURCE_DIR"
+        Value="$(REPO_DIR)/nadir/source"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="WINDOWS_DEFINES"
+        Value="WINSOCK_2;DEFAULT_LOGGING_LEVELS_ERROR;XOS_CONSOLE_MAIN_MAIN"
+    />
+    <UserMacro
+        Name="WINDOWS_DEBUG_DEFINES"
+        Value="DEBUG_BUILD;$(WINDOWS_DEFINES)"
+    />
+    <UserMacro
+        Name="WINDOWS_RELEASE_DEFINES"
+        Value="RELEASE_BUILD;$(WINDOWS_DEFINES)"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="WINDOWS_INCLUDE_DIRS"
+        Value="$(NADIR_SOURCE_DIR)/thirdparty/gnu/getopt;$(ROSTRA_SOURCE_DIR)/xos/platform/microsoft/windows/posix"
+    />
+    <UserMacro
+        Name="WINDOWS_LIB_DIRS"
+        Value=""
+    />
+    <UserMacro
+        Name="WINDOWS_LIBS"
+        Value="Ws2_32.lib Rpcrt4.lib"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+</VisualStudioPropertySheet>

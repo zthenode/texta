@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!--
+=====================================================================
+=== Copyright (c) 1988-2021 $organization$
+===
+=== This software is provided by the author and contributors ``as is'' 
+=== and any express or implied warranties, including, but not limited to, 
+=== the implied warranties of merchantability and fitness for a particular 
+=== purpose are disclaimed. In no event shall the author or contributors 
+=== be liable for any direct, indirect, incidental, special, exemplary, 
+=== or consequential damages (including, but not limited to, procurement 
+=== of substitute goods or services; loss of use, data, or profits; or 
+=== business interruption) however caused and on any theory of liability, 
+=== whether in contract, strict liability, or tort (including negligence 
+=== or otherwise) arising in any way out of the use of this software, 
+=== even if advised of the possibility of such damage.
+===
+===   File: evx.vsprops
+===
+=== Author: $author$
+===   Date: 10/5/2021
+=====================================================================
+-->
+<VisualStudioPropertySheet
+    ProjectType="Visual C++"
+    Version="8.00"
+    Name="evx">
+
+    <!--
+    =====================================================================
+    Depends: evdebug
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="EVX_GROUP"
+        Value=""
+    />
+    <UserMacro
+        Name="EVX_NAME"
+        Value="texta"
+    />
+    <UserMacro
+        Name="EVX_VERSION"
+        Value=""
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="EVX_DIR"
+        Value="$(EVX_GROUP)$(EVX_NAME)$(EVX_VERSION)"
+    />
+    <UserMacro
+        Name="EVX_SOURCE_DIR"
+        Value="$(SOURCE_ROOT_DIR)/$(EVX_DIR)/source"
+    />
+    <UserMacro
+        Name="EVX_BUILD_DIR"
+        Value="$(SOURCE_BUILD_DIR)/$(EVX_DIR)/build"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="EVX_BUILD"
+        Value="$(EVX_BUILD_DIR)/$(PlatformName)/$(VCVersion)/$(ConfigurationName)"
+    />
+    <UserMacro
+        Name="EVX_OBJ"
+        Value="$(EVX_BUILD)/obj/$(ProjectName)"
+    />
+    <UserMacro
+        Name="EVX_LIB"
+        Value="$(EVX_BUILD)/lib"
+    />
+    <UserMacro
+        Name="EVX_BIN"
+        Value="$(EVX_BUILD)/bin"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="EVX_DEFINES"
+        Value="XOS_LIB_EVX_VERSION_BUILD_DATE=10/5/2021"
+    />
+    <UserMacro
+        Name="EVX_DEBUG_DEFINES"
+        Value="$(EVDEBUG_DEBUG_DEFINES);$(WINDOWS_DEBUG_DEFINES);$(EVX_DEFINES)"
+    />
+    <UserMacro
+        Name="EVX_RELEASE_DEFINES"
+        Value="$(EVDEBUG_RELEASE_DEFINES);$(WINDOWS_RELEASE_DEFINES);$(EVX_DEFINES)"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+  
+    <UserMacro
+        Name="EVX_SRC"
+        Value="$(EVX_SOURCE_DIR)/evx"
+    />
+    <UserMacro
+        Name="EVX_INCLUDE_DIRS"
+        Value="$(EVX_SRC)/ev2c/ev2crypto;$(EVX_SRC)/ev2c/crypto;$(EVX_SRC)/ev2c;$(EVX_SRC)/evc;$(EVX_SRC)/ev2c/mpint/bn;$(EVX_SRC);$(EVX_SRC)/evcrypto;$(EVX_SRC)/os/evdebug;$(EVX_SRC)/os/evx;$(EVX_SRC)/os;$(EVX_SRC)/base;$(EVX_SRC);$(WINDOWS_INCLUDE_DIRS)"
+    />
+    <UserMacro
+        Name="EVX_LIB_DIRS"
+        Value="$(EVX_LIB);$(WINDOWS_LIB_DIRS)"
+    />
+    <UserMacro
+        Name="EVX_LIBS"
+        Value="libev.lib libevdebug.lib $(WINDOWS_LIBS)"
+    />
+
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+</VisualStudioPropertySheet>
+<!--
+=====================================================================
+$(EVX_BIN)
+$(EVX_LIB)
+$(EVX_OBJ)
+..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\evdebug.vsprops;..\..\windows.vsprops;..\..\evx.vsprops
+$(EVX_INCLUDE_DIRS)
+$(EVX_LIB_DIRS)
+$(EVX_LIBS)
+$(EVX_DEBUG_DEFINES)
+$(EVX_RELEASE_DEFINES)
+$(EVX_EXE_DEBUG_DEFINES)
+$(EVX_EXE_RELEASE_DEFINES)
+=====================================================================
+-->

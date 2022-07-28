@@ -16,13 +16,14 @@
 #   File: texta.pri
 #
 # Author: $author$
-#   Date: 9/6/2021
+#   Date: 9/6/2021, 7/27/2022
 #
 # QtCreator .pri file for texta executable texta
 ########################################################################
 
 ########################################################################
 # texta
+TEXTA_IMPLEMENTED = medusade
 
 # texta_exe TARGET
 #
@@ -31,14 +32,10 @@ texta_exe_TARGET = texta
 # texta_exe INCLUDEPATH
 #
 texta_exe_INCLUDEPATH += \
-$${texta_xde_INCLUDEPATH} \
 
 # texta_exe DEFINES
 #
 texta_exe_DEFINES += \
-$${texta_xde_DEFINES} \
-DEFAULT_LOGGING_LEVELS_ERROR \
-XOS_APP_CONSOLE_LANGUAGE_TEXTA_MAIN_INSTANCE \
 
 ########################################################################
 # texta_exe OBJECTIVE_HEADERS
@@ -55,37 +52,11 @@ XOS_APP_CONSOLE_LANGUAGE_TEXTA_MAIN_INSTANCE \
 # texta_exe HEADERS
 #
 texta_exe_HEADERS += \
-$${TEXTA_SRC}/xos/language/texta/processor/exception.hpp \
-$${TEXTA_SRC}/xos/language/texta/processor/observer.hpp \
-$${TEXTA_SRC}/xos/language/texta/processor/implement.hpp \
-$${TEXTA_SRC}/xos/language/texta/processor/xde/implemented.hpp \
-$${TEXTA_SRC}/xos/language/texta/processor/xde/cTInput.hpp \
-$${TEXTA_SRC}/xos/language/texta/processor/xde/cTOutput.hpp \
-\
-$${TEXTA_SRC}/xos/app/console/language/texta/main_opt.hpp \
-$${TEXTA_SRC}/xos/app/console/language/texta/main.hpp \
-\
-$${NADIR_SRC}/xos/console/main_main.hpp \
 
 # texta_exe SOURCES
 #
 texta_exe_SOURCES += \
-$${xde_t_function_SOURCES} \
-\
-$${TEXTA_SRC}/xos/language/texta/processor/exception.cpp \
-$${TEXTA_SRC}/xos/language/texta/processor/observer.cpp \
-$${TEXTA_SRC}/xos/language/texta/processor/implement.cpp \
-$${TEXTA_SRC}/xos/language/texta/processor/xde/implemented.cpp \
-$${TEXTA_SRC}/xos/language/texta/processor/xde/cTInput.cpp \
-$${TEXTA_SRC}/xos/language/texta/processor/xde/cTOutput.cpp \
-\
-$${TEXTA_SRC}/xos/app/console/language/texta/main_opt.cpp \
-$${TEXTA_SRC}/xos/app/console/language/texta/main.cpp \
-\
-$${NADIR_SRC}/xos/console/main_main.cpp \
 
-
-########################################################################
 # texta_exe FRAMEWORKS
 #
 texta_exe_FRAMEWORKS += \
@@ -95,10 +66,134 @@ $${texta_FRAMEWORKS} \
 #
 texta_exe_LIBS += \
 $${texta_LIBS} \
+
+########################################################################
+# texta_exe xde implemented INCLUDEPATH
+#
+texta_exe_xde_implemented_INCLUDEPATH += \
+$${texta_xde_INCLUDEPATH} \
+
+# texta_exe xde implemented DEFINES
+#
+texta_exe_xde_implemented_DEFINES += \
+$${texta_xde_DEFINES} \
+DEFAULT_LOGGING_LEVELS_ERROR \
+XOS_APP_CONSOLE_LANGUAGE_TEXTA_MAIN_INSTANCE \
+
+# texta_exe xde implemented HEADERS
+#
+texta_exe_xde_implemented_HEADERS += \
+$${texta_xde_implemented_HEADERS} \
+$${TEXTA_SRC}/xos/app/console/language/texta/xde/main.hpp \
+
+# texta_exe xde implemented SOURCES
+#
+texta_exe_xde_implemented_SOURCES += \
+$${texta_xde_implemented_SOURCES} \
+$${TEXTA_SRC}/xos/app/console/language/texta/xde/main.cpp \
+
+# texta_exe xde implemented FRAMEWORKS
+#
+texta_exe_xde_implemented_FRAMEWORKS += \
+
+# texta_exe xde implemented LIBS
+#
+texta_exe_xde_implemented_LIBS += \
+$${texta_LIBS} \
 $${xde_LIBS} \
 $${textadebug_LIBS} \
 
 ########################################################################
+# texta_exe medusade INCLUDEPATH
+#
+texta_exe_medusade_INCLUDEPATH += \
+$${texta_medusade_INCLUDEPATH} \
+
+# texta_exe medusade DEFINES
+#
+texta_exe_medusade_DEFINES += \
+$${texta_medusade_DEFINES} \
+DEFAULT_LOGGING_LEVELS_ERROR \
+XOS_CONSOLE_MAIN_MAIN \
+
+# texta_exe medusade HEADERS
+#
+texta_exe_medusade_HEADERS += \
+$${medusade_texta_HEADERS} \
+$${MEDUSADE_TEXTA_SRC}/texta/app/console/texta/main.hpp \
+
+# texta_exe medusade SOURCES
+#
+texta_exe_medusade_SOURCES += \
+$${medusade_texta_SOURCES} \
+$${MEDUSADE_TEXTA_SRC}/texta/app/console/texta/main.cpp \
+
+# texta_exe medusade FRAMEWORKS
+#
+texta_exe_medusade_FRAMEWORKS += \
+
+# texta_exe medusade LIBS
+#
+texta_exe_medusade_LIBS += \
+
+########################################################################
+# texta_exe implemented INCLUDEPATH
+#
+texta_exe_implemented_INCLUDEPATH += \
+
+# texta_exe implemented DEFINES
+#
+texta_exe_implemented_DEFINES += \
+DEFAULT_LOGGING_LEVELS_ERROR \
+XOS_CONSOLE_MAIN_MAIN \
+
+# texta_exe implemented HEADERS
+#
+texta_exe_implemented_HEADERS += \
+$${texta_implemented_HEADERS} \
+$${TEXTA_SRC}/xos/app/console/language/texta/main.hpp \
+
+# texta_exe implemented SOURCES
+#
+texta_exe_implemented_SOURCES += \
+$${texta_implemented_SOURCES} \
+$${TEXTA_SRC}/xos/app/console/language/texta/main.cpp \
+
+# texta_exe implemented FRAMEWORKS
+#
+texta_exe_implemented_FRAMEWORKS += \
+
+# texta_exe implemented LIBS
+#
+texta_exe_implemented_LIBS += \
+
+########################################################################
+
+contains(TEXTA_IMPLEMENTED,medusade) {
+texta_exe_INCLUDEPATH += $${texta_exe_medusade_INCLUDEPATH}
+texta_exe_DEFINES += $${texta_exe_medusade_DEFINES}
+texta_exe_HEADERS += $${texta_exe_medusade_HEADERS}
+texta_exe_SOURCES += $${texta_exe_medusade_SOURCES}
+texta_exe_FRAMEWORKS += $${texta_exe_medusade_FRAMEWORKS}
+texta_exe_LIBS += $${texta_exe_medusade_LIBS}
+} else {
+contains(TEXTA_IMPLEMENTED,xde) {
+texta_exe_INCLUDEPATH += $${texta_exe_xde_implemented_INCLUDEPATH}
+texta_exe_DEFINES += $${texta_exe_xde_implemented_DEFINES}
+texta_exe_HEADERS += $${texta_exe_xde_implemented_HEADERS}
+texta_exe_SOURCES += $${texta_exe_xde_implemented_SOURCES}
+texta_exe_FRAMEWORKS += $${texta_exe_xde_implemented_FRAMEWORKS}
+texta_exe_LIBS += $${texta_exe_xde_implemented_LIBS}
+} else {
+texta_exe_INCLUDEPATH += $${texta_exe_implemented_INCLUDEPATH}
+texta_exe_DEFINES += $${texta_exe_implemented_DEFINES}
+texta_exe_HEADERS += $${texta_exe_implemented_HEADERS}
+texta_exe_SOURCES += $${texta_exe_implemented_SOURCES}
+texta_exe_FRAMEWORKS += $${texta_exe_implemented_FRAMEWORKS}
+texta_exe_LIBS += $${texta_exe_implemented_LIBS}
+} # contains(TEXTA_IMPLEMENTED,xde)
+} # contains(TEXTA_IMPLEMENTED,medusade)
+
+########################################################################
 # NO Qt
 QT -= gui core
-

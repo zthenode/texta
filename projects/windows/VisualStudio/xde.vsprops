@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!--
+=====================================================================
+=== Copyright (c) 1988-2021 $organization$
+===
+=== This software is provided by the author and contributors ``as is'' 
+=== and any express or implied warranties, including, but not limited to, 
+=== the implied warranties of merchantability and fitness for a particular 
+=== purpose are disclaimed. In no event shall the author or contributors 
+=== be liable for any direct, indirect, incidental, special, exemplary, 
+=== or consequential damages (including, but not limited to, procurement 
+=== of substitute goods or services; loss of use, data, or profits; or 
+=== business interruption) however caused and on any theory of liability, 
+=== whether in contract, strict liability, or tort (including negligence 
+=== or otherwise) arising in any way out of the use of this software, 
+=== even if advised of the possibility of such damage.
+===
+===   File: xde.vsprops
+===
+=== Author: $author$
+===   Date: 10/7/2021
+=====================================================================
+-->
+<VisualStudioPropertySheet
+    ProjectType="Visual C++"
+    Version="8.00"
+    Name="xde">
+
+    <!--
+    =====================================================================
+    Depends: xdedebug
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="XDE_GROUP"
+        Value=""
+    />
+    <UserMacro
+        Name="XDE_NAME"
+        Value="texta"
+    />
+    <UserMacro
+        Name="XDE_VERSION"
+        Value=""
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="XDE_DIR"
+        Value="$(XDE_GROUP)$(XDE_NAME)$(XDE_VERSION)"
+    />
+    <UserMacro
+        Name="XDE_SOURCE_DIR"
+        Value="$(SOURCE_ROOT_DIR)/$(XDE_DIR)/source"
+    />
+    <UserMacro
+        Name="XDE_BUILD_DIR"
+        Value="$(SOURCE_BUILD_DIR)/$(XDE_DIR)/build"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="XDE_BUILD"
+        Value="$(XDE_BUILD_DIR)/$(PlatformName)/$(VCVersion)/$(ConfigurationName)"
+    />
+    <UserMacro
+        Name="XDE_OBJ"
+        Value="$(XDE_BUILD)/obj/$(ProjectName)"
+    />
+    <UserMacro
+        Name="XDE_LIB"
+        Value="$(XDE_BUILD)/lib"
+    />
+    <UserMacro
+        Name="XDE_BIN"
+        Value="$(XDE_BUILD)/bin"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+    <UserMacro
+        Name="XDE_DEFINES"
+        Value="XOS_LIB_XDE_VERSION_BUILD_DATE=10/7/2021"
+    />
+    <UserMacro
+        Name="XDE_DEBUG_DEFINES"
+        Value="$(XDEDEBUG_DEBUG_DEFINES);$(WINDOWS_DEBUG_DEFINES);$(XDE_DEFINES)"
+    />
+    <UserMacro
+        Name="XDE_RELEASE_DEFINES"
+        Value="$(XDEDEBUG_RELEASE_DEFINES);$(WINDOWS_RELEASE_DEFINES);$(XDE_DEFINES)"
+    />
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+  
+    <UserMacro
+        Name="XDE_SRC"
+        Value="$(XDE_SOURCE_DIR)/xde"
+   />
+  <UserMacro
+       Name="XDE_INCLUDE_DIRS"
+       Value="$(XDE_SRC)/clib/ccgi;$(XDE_SRC)/clib/cxttp;$(XDE_SRC)/clib/cyy;$(XDE_SRC)/clib/cxsl;$(XDE_SRC)/clib/ct;$(XDE_SRC)/clib/ccrypto;$(XDE_SRC)/clib/csocket;$(XDE_SRC)/clib/cfs;$(XDE_SRC)/clib/cos/cwin;$(XDE_SRC)/clib/cos/cunix;$(XDE_SRC)/clib/cos/cplatform;$(XDE_SRC)/clib/cos;$(XDE_SRC)/clib/cbase;$(XDE_SRC)/clib;$(WINDOWS_INCLUDE_DIRS)"
+    />
+  <UserMacro
+        Name="XDE_LIB_DIRS"
+        Value="$(XDE_LIB);$(XDEDEBUG_LIB);$(WINDOWS_LIB_DIRS)"
+    />
+    <UserMacro
+        Name="XDE_LIBS"
+        Value="libxde.lib libxdedebug.lib $(WINDOWS_LIBS)"
+    />
+
+
+    <!--
+    =====================================================================
+    =====================================================================
+    -->
+
+</VisualStudioPropertySheet>
+<!--
+=====================================================================
+$(XDE_BIN)
+$(XDE_LIB)
+$(XDE_OBJ)
+..\vcversion.vsprops;..\..\vcproj.vsprops;..\..\xdedebug.vsprops;..\..\windows.vsprops;..\..\xde.vsprops
+$(XDE_INCLUDE_DIRS)
+$(XDE_LIB_DIRS)
+$(XDE_LIBS)
+$(XDE_DEBUG_DEFINES)
+$(XDE_RELEASE_DEFINES)
+$(XDE_EXE_DEBUG_DEFINES)
+$(XDE_EXE_RELEASE_DEFINES)
+=====================================================================
+-->
